@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Functions\Helper;
-use App\Models\ProgrammingLanguage;
 
 class ProjectSeeder extends Seeder
 {

@@ -1,11 +1,18 @@
 body{
     overflow: hidden;
 
-
-    .my-body-card {
-        overflow: auto;
-        height: 85vh;
+    .sticky-top {
+        transition: background-color 0.3s ease;
+        &.scrolled {
+          background-color: #f8f9fa !important;
+        }
+    };
+    .my-margin{
+        background-color: white;
+        margin-bottom: 3em;
+        justify-self: center;
     }
+
 
     header, aside {
         li{
@@ -26,8 +33,4 @@ body{
         padding: 2em 0;
         border-top: 1px solid grey;
     };
-
-    .my-admin-main{
-        padding: 2em;
-    }
 }

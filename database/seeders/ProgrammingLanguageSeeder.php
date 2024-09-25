@@ -13,8 +13,7 @@ class ProgrammingLanguageSeeder extends Seeder
      */
     public function run(): void
     {
-
-        DB::table('programming_languages')->insert([
+        DB::table('programmingLanguages')->insert([
             ['name' => 'PHP'],
             ['name' => 'JavaScript'],
             ['name' => 'Python'],
