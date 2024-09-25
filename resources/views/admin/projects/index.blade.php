@@ -44,9 +44,9 @@
                                 <tr>
                                     <td>{{ $project->name }}</td>
                                     <td>{{ Str::limit($project->description, 50) }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         @if ($project->programmingLanguage)
-                                            <span class="">{{ $project->programmingLanguage->name }}</span>
+                                            <span>{{ $project->programmingLanguage->name }}</span>
                                         @endif
                                     </td>
                                     <td>
