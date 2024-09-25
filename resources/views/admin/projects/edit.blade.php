@@ -25,10 +25,10 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="programming_language_id" class="form-label fw-bold">Linguaggio</label>
-                        <select class="form-select" name="programming_language_id" id="programming_language_id" required>
+                        <label for="programmingLanguage_id" class="form-label fw-bold">Linguaggio</label>
+                        <select class="form-select" name="programmingLanguage_id" id="programmingLanguage_id" required>
                             <option value="">Seleziona un linguaggio</option>
-                            @foreach ($programming_languages as $language)
+                            @foreach ($programmingLanguages as $language)
                                 <option value="{{ $language->id }}">
                                     {{ $language->name }}
                                 </option>

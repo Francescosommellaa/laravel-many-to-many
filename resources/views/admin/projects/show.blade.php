@@ -38,8 +38,11 @@
                                 <h5 class="card-title mb-3 mt-4">Dettagli Tecnici</h5>
                                 <p class="mb-2">
                                     <strong>Linguaggio:</strong>
-                                    <span
-                                        class="badge bg-primary">{{ $project->programming_language->name ?? 'Nessun linguaggio' }}</span>
+                                    @if ($project->programmingLanguage)
+                                        <span class="badge bg-secondary">{{ $project->programmingLanguage->name }}</span>
+                                    @else
+                                        <span class="text-muted">Nessun linguaggio specificato</span>
+                                    @endif
                                 </p>
                                 <p class="mb-2">
                                     <strong>Tecnologie:</strong>
