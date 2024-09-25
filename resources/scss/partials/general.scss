@@ -1,0 +1,33 @@
+body{
+    overflow: hidden;
+
+
+    .my-body-card {
+        overflow: auto;
+        height: 85vh;
+    }
+
+    header, aside {
+        li{
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    };
+
+    aside {
+        height: 97.8vh;
+        min-width: 200px;
+        padding: 2em 0;
+        border-top: 1px solid grey;
+    };
+
+    .my-admin-main{
+        padding: 2em;
+    }
+}
