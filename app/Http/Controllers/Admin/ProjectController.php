@@ -7,6 +7,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -19,8 +20,12 @@ class ProjectController extends Controller
 
     public function create()
     {
-        $programming_languages = DB::table('programming_languages')->get(['id', 'name']);
-        return view('admin.projects.create', compact('programming_languages'));
+        $technologies = Technology::distinct()->orderBy('name')->get();
+        $programming_languages = DB::table('programming_languages')
+            ->distinct()
+            ->orderBy('name')
+            ->get(['id', 'name']);
+        return view('admin.projects.create', compact('programming_languages', 'technologies'));
     }
 
     public function store(Request $request)
@@ -29,27 +34,39 @@ class ProjectController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'programming_language_id' => 'nullable|exists:programming_languages,id',
+            'technologies' => 'array|exists:technologies,id',
             'img' => 'nullable|string',
             'thumbnail_img' => 'nullable|string',
             'website_url' => 'required|string|url',
         ]);
 
+        $validatedData = $request->all();
         $validatedData['slug'] = Str::slug($request->name);
-        Project::create($request->all());
+
+        $project = Project::create($validatedData);
+        $project->technologies()->sync($request->technologies);
 
         return redirect()->route('admin.projects.index')->with('success', 'Progetto creato con successo.');
     }
 
     public function edit(Project $project)
     {
-        $programming_languages = DB::table('programming_languages')->get(['id', 'name']);
-        return view('admin.projects.edit', compact('project', 'programming_languages'));
+        $technologies = Technology::distinct()->orderBy('name')->get();
+        $programming_languages = DB::table('programming_languages')
+            ->distinct()
+            ->orderBy('name')
+            ->get(['id', 'name']);
+        return view('admin.projects.edit', compact('project', 'programming_languages', 'technologies'));
     }
 
     public function show(Project $project)
     {
-        $programming_languages = DB::table('programming_languages')->get(['id', 'name']);
-        return view('admin.projects.show', compact('project', 'programming_languages'));
+        $technologies = Technology::distinct()->orderBy('name')->get();
+        $programming_languages = DB::table('programming_languages')
+            ->distinct()
+            ->orderBy('name')
+            ->get(['id', 'name']);
+        return view('admin.projects.show', compact('project', 'programming_languages', 'technologies'));
     }
 
     public function update(Request $request, Project $project)
@@ -58,13 +75,17 @@ class ProjectController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'programming_language_id' => 'nullable|exists:programming_languages,id',
+            'technologies' => 'array|exists:technologies,id',
             'img' => 'nullable|string',
             'thumbnail_img' => 'nullable|string',
             'website_url' => 'required|string|url',
         ]);
 
+        $validatedData = $request->all();
         $validatedData['slug'] = Str::slug($request->name);
-        $project->update($request->all());
+
+        $project->update($validatedData);
+        $project->technologies()->sync($request->technologies);
 
         return redirect()->route('admin.projects.index')->with('success', 'Progetto aggiornato con successo.');
     }

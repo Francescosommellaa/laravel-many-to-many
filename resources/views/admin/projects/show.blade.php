@@ -26,6 +26,7 @@
             <div class="card-body">
                 <p>{{ $project->description }}</p>
                 <span>{{ $project->programming_language->name ?? 'Nessun linguaggio' }}</span>
+                <span>{{ $project->$technologies->name ?? 'Nessun linguaggio' }}</span>
                 @if ($project->img)
                     <img src="{{ $project->img }}" alt="{{ $project->name }}" class="img-fluid">
                 @endif

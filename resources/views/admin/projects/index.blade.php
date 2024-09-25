@@ -24,7 +24,8 @@
                                 <tr>
                                     <th>Nome</th>
                                     <th>Descrizione</th>
-                                    <th>Linguaggi Utilizzati:</th>
+                                    <th>Linguaggio:</th>
+                                    <th>Tecnologia:</th>
                                     <th>Slug</th>
                                     <th>Azioni</th>
                                 </tr>
@@ -36,6 +37,17 @@
                                         <td>{{ $project->name }}</td>
                                         <td>{{ Str::limit($project->description, 50) }}</td>
                                         <td>{{ $project->programming_language->name ?? 'Nessun linguaggio' }}</td>
+                                        <td>
+                                            @if ($project->technologies->isNotEmpty())
+                                                @foreach ($project->technologies as $technology)
+                                                    {{ $technology->name }}@if (!$loop->last)
+                                                        ,
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                Nessuna tecnologia
+                                            @endif
+                                        </td>
                                         <td>{{ $project->slug }}</td>
                                         <td>
                                             <a href="{{ route('admin.projects.show', $project->id) }}"

@@ -22,10 +22,20 @@
                         <textarea name="description" class="form-control" rows="5" required>{{ old('description', $project->description) }}</textarea>
                     </div>
 
-                    <label for="programming_language_id">Linguaggio:</label>
+                    <label for="programming_language_id[]">Linguaggio:</label>
                     <select class="form-control" name="programming_language_id" id="programming_language_id" required>
                         @foreach ($programming_languages as $language)
                             <option value="{{ $language->id }}">{{ $language->name }}</option>
+                        @endforeach
+                    </select>
+
+                    <label for="technologies">Technologia:</label>
+                    <select class="form-control" name="technologies" id="technologies" required>
+                        @foreach ($technologies as $technology)
+                            <option value="{{ $technology->id }}"
+                                {{ in_array($technology->id, $project->technologies->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                {{ $technology->name }}
+                            </option>
                         @endforeach
                     </select>
 
