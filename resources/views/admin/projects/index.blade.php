@@ -45,8 +45,8 @@
                                     <td>{{ $project->name }}</td>
                                     <td>{{ Str::limit($project->description, 50) }}</td>
                                     <td>
-                                        @if ($project->programming_language)
-                                            <span class="badge bg-primary">{{ $project->programming_language->name }}</span>
+                                        @if ($project->programmingLanguage)
+                                            <span class="">{{ $project->programmingLanguage->name }}</span>
                                         @endif
                                     </td>
                                     <td>

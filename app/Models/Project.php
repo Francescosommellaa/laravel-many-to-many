@@ -12,6 +12,7 @@ class Project extends Model
     protected $fillable = [
         'name',
         'description',
+        'programming_language_id',
         'slug',
         'img',
         'thumbnail_img',
@@ -20,7 +21,7 @@ class Project extends Model
 
     public function programmingLanguage()
     {
-        return $this->belongsTo(ProgrammingLanguage::class);
+        return $this->belongsTo(ProgrammingLanguage::class, 'programming_language_id');
     }
     public function technologies()
     {
