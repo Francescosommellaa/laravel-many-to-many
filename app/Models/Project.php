@@ -12,11 +12,12 @@ class Project extends Model
     protected $fillable = [
         'name',
         'description',
-        'programming_language_id',
-        'slug',
         'img',
+        'img_original_name',
         'thumbnail_img',
-        'website_url'
+        'thumbnail_original_name',
+        'website_url',
+        'slug'
     ];
 
     public function programmingLanguage()
