@@ -7,8 +7,9 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\ProgrammingLanguage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
+
 
 class ProjectController extends Controller
 {
@@ -38,6 +39,13 @@ class ProjectController extends Controller
         ]);
 
         $validatedData['slug'] = Str::slug($request->name);
+
+        if (array_key_exists('img', $validatedData)) {
+            $img = Storage::put('uploads', $request->img);
+            $img_original_name = $request->img->getClientOriginalName();
+            $data['img'] = $img;
+            $data['img_original_name'] = $img_original_name;
+        }
 
         $project = Project::create($validatedData);
         if ($request->has('technologies')) {

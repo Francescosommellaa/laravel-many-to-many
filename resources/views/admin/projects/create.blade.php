@@ -6,7 +6,8 @@
             <div class="col-lg-8">
                 <h1 class="mb-4 text-center">Crea Nuovo Progetto</h1>
 
-                <form action="{{ route('admin.projects.store') }}" method="POST" class="needs-validation" novalidate>
+                <form action="{{ route('admin.projects.store') }}" method="POST" class="needs-validation"
+                    enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-4">
@@ -45,15 +46,13 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="img" class="form-label fw-bold">Immagine (URL)</label>
-                        <input type="url" name="img" id="img" class="form-control"
-                            placeholder="Inserisci l'URL dell'immagine">
+                        <label for="img" class="form-label fw-bold">Carica Immagine</label>
+                        <input type="file" name="img" id="img" class="form-control">
                     </div>
 
                     <div class="mb-4">
-                        <label for="thumbnail_img" class="form-label fw-bold">Miniatura (URL)</label>
-                        <input type="url" name="thumbnail_img" id="thumbnail_img" class="form-control"
-                            placeholder="Inserisci l'URL della miniatura">
+                        <label for="thumbnail_img" class="form-label fw-bold">Carica Miniatura</label>
+                        <input type="file" name="thumbnail_img" id="thumbnail_img" class="form-control">
                     </div>
 
                     <div class="mb-4">

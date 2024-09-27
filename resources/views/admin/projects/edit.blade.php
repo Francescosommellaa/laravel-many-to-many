@@ -50,14 +50,14 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="img" class="form-label fw-bold">Immagine (URL)</label>
-                        <input type="url" name="img" id="img" class="form-control"
+                        <label for="img" class="form-label fw-bold">Carica Immagine</label>
+                        <input type="file" name="img" id="img" class="form-control"
                             value="{{ old('img', $project->img) }}">
                     </div>
 
                     <div class="mb-4">
-                        <label for="thumbnail_img" class="form-label fw-bold">Miniatura (URL)</label>
-                        <input type="url" name="thumbnail_img" id="thumbnail_img" class="form-control"
+                        <label for="thumbnail_img" class="form-label fw-bold">Carica Miniatura</label>
+                        <input type="file" name="thumbnail_img" id="thumbnail_img" class="form-control"
                             value="{{ old('thumbnail_img', $project->thumbnail_img) }}">
                     </div>
 
